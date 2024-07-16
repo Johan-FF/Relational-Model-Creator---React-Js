@@ -94,7 +94,8 @@ export default function App() {
   }, [edges, nodes]);
 
   const httpHandler = async () => {
-    const url = "http://localhost:8000/fastapi/download";
+    const url = panelState.selectedTech.toUpperCase()==="FASTAPI"? "http://localhost:8000/fastapi/download" : "http://localhost:8000/nestapi/downloadNest";
+    console.log(generateXML(nodes, edges, panelState));
 
     try {
       const response = await fetch(url, {
